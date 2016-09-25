@@ -1,0 +1,20 @@
+﻿<header class="headerClass" ng-controller="HeaderController">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#idNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand brandName" href="#">{{BrandText}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="idNav">
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="items in menuItem"><a href="#">{{items.item}}</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>

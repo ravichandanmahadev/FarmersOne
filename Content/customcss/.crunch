@@ -1,0 +1,23 @@
+{
+	"files": {
+		"custom.less": {
+			"engines": [
+				{
+					"compiler": "less",
+					"output": "custom.css",
+					"options": {
+						"compress": false,
+						"ieCompat": false,
+						"strictMath": false,
+						"strictUnits": false,
+						"javascriptEnabled": false,
+						"sourcemap": true
+					}
+				}
+			],
+			"sources": [
+				"custom.less"
+			]
+		}
+	}
+}
