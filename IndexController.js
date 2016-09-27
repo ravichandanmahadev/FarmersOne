@@ -4,8 +4,8 @@
     .service("GetLocation", GetLocation)
     .config(config);
 
-ControllerFunction.$inject = ['indexService', '$http', 'GetLocation'];
-function ControllerFunction(indexService, $http,  GetLocation) {
+ControllerFunction.$inject = ['indexService', 'GetLocation'];
+function ControllerFunction(indexService,GetLocation) {
     var ctrl = this;
     ctrl.menuItem = indexService.MenuItem;
     ctrl.BrandText = indexService.BrandName;
@@ -17,7 +17,7 @@ function ControllerFunction(indexService, $http,  GetLocation) {
     promise.then(function (result) {
         ctrl.lat = result.lat;
         ctrl.lng = result.lng;
-       return GetLocation.GetAddress(result.lat, result.lng);        
+       return GetLocation.GetAddress(result.lat, result.lng);
     }).then(function (result1) {
         console.log(result1)
         var address = result1.data.results[2].formatted_address;
@@ -27,7 +27,3 @@ function ControllerFunction(indexService, $http,  GetLocation) {
     });
 
 };
-
-
-
-
