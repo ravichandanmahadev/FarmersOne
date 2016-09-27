@@ -1,30 +1,30 @@
 ﻿angular.module("root", ['ngMap'])
     .controller("IndexController", ControllerFunction)
     .provider("indexService", IndexServiceProvider)
+    .service("GetLocation", GetLocation)
     .config(config);
 
-ControllerFunction.$inject = ['indexService', '$http'];
-function ControllerFunction(indexService, $http) {
+ControllerFunction.$inject = ['indexService', '$http', 'GetLocation'];
+function ControllerFunction(indexService, $http,  GetLocation) {
     var ctrl = this;
     ctrl.menuItem = indexService.MenuItem;
     ctrl.BrandText = indexService.BrandName;
     ctrl.LogoUrl = indexService.LogoName;
 
+    //service to retrieve the location
+    var promise = GetLocation.GetCurrentLocation();
 
-    if (navigator.geolocation) navigator.geolocation.getCurrentPosition(onPositionUpdate);
-
-    function onPositionUpdate(position) {
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true";
-        $http.get(url)
-            .then(function (result) {
-                var address = result.data.results[2].formatted_address;
-                ctrl.address = address;
-            });
-        ctrl.lat = lat;
-        ctrl.lng = lng;
-    }
+    promise.then(function (result) {
+        ctrl.lat = result.lat;
+        ctrl.lng = result.lng;
+       return GetLocation.GetAddress(result.lat, result.lng);        
+    }).then(function (result1) {
+        console.log(result1)
+        var address = result1.data.results[2].formatted_address;
+        ctrl.address = address;
+    }).catch(function () {
+        console.log("Something went wrong!! Unable to find current location!!")
+    });
 
 };
 
