@@ -1,5 +1,19 @@
-﻿angular.module("root", [])
-    .controller("HeaderController", ["$scope", function ($scope) {      
-        $scope.menuItem = [{ item: "Menu Item1" }, { item: "Menu Item2" }, { item: "Menu Item3" }, { item: "Menu Item4" }, { item: "Menu Item5" }];
-        $scope.BrandText = " MOBIRD FARMS CALIFORNIA";
-    }]);
+var app = ﻿angular.module("Header", []);
+    app.controller("HeaderController", HeaderController);
+    app.directive("headerPanel", headerPanel);
+
+function headerPanel(){
+  var ddo = {
+    restrict:"E",
+    templateUrl : 'Components/Header/Header.html',
+    controller : 'HeaderController as list',
+    bindToController : true
+  };
+  return ddo;
+}
+HeaderController.$inject = ['indexService'];
+function HeaderController(indexService){
+  var ctrl = this;
+  ctrl.menuList =   indexService.MenuItem;
+  console.log(ctrl.menuList);
+}

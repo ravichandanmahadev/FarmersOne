@@ -1,4 +1,4 @@
-﻿angular.module("root", ['ngMap'])
+﻿angular.module("root", ['ngMap','Header'])
     .controller("IndexController", ControllerFunction)
     .provider("indexService", IndexServiceProvider)
     .service("GetLocation", GetLocation)
@@ -25,5 +25,4 @@ function ControllerFunction(indexService,GetLocation) {
     }).catch(function () {
         console.log("Something went wrong!! Unable to find current location!!")
     });
-
 };

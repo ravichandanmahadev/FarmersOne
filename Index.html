@@ -14,48 +14,21 @@
     <link rel="stylesheet" type="text/css" href="Content/customcss/custom.css" />
     <script src="IndexService.js"></script>
     <script src="IndexController.js"></script>
-
+    <script src="Components/Header/HeaderController.js"></script>
 </head>
 <body ng-app="root" ng-controller="IndexController as Index">
-    <header class="container-fluid">
-        <nav class="navbar navbar-default navbar-static-top"  >
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#idNav" aria-expanded="false">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="#"><img src="Content/Images/Logo.png" alt="Farmers One"></a>
-                </div>
-                <div class="collapse navbar-collapse" id="idNav">
-                    <ul class="nav navbar-nav">
-                        <li ng-repeat="items in Index.menuItem" ><a href="#">{{::items.item}}</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="btn btn-block">
-        <a><span class="fa fa-facebook-square"></span></a>
-        <a><span class="fa fa-twitter-square"></span></a>
-        <a><span class="fa fa-youtube-square"></span></a>
-        <a><span class="fa fa-instagram"></span></a>
-    </div>
-    <div class="col-md-6">  
+  <header-panel></header-panel>
+    <div class="col-md-6">
         <map center="[{{Index.lat}}, {{Index.lng}}]">
             <marker position="{{Index.lat}}, {{Index.lng}}"
                     title = "Current Location"></marker>
         </map>
     </div>
-    
     <div class="col-md-6">
         <div>
             <h4><b>Current Location:</b></h4>
             <div> {{Index.address}}</div>
         </div>
-
     </div>
 </body>
 </html>
