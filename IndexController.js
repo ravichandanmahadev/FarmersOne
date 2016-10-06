@@ -1,28 +1,23 @@
-﻿angular.module("root", ['ngMap','Header'])
-    .controller("IndexController", ControllerFunction)
-    .provider("indexService", IndexServiceProvider)
-    .service("GetLocation", GetLocation)
-    .config(config);
+﻿var app = angular.module("root", ['ngMap','Header', 'Home', 'ui.router']);
+app.controller("IndexController", ControllerFunction);
+app.provider("indexService", IndexServiceProvider).config(config);
+// app.config(RouteConfig);
 
-ControllerFunction.$inject = ['indexService', 'GetLocation'];
-function ControllerFunction(indexService,GetLocation) {
+
+ControllerFunction.$inject = ['indexService'];
+function ControllerFunction(indexService) {
     var ctrl = this;
     ctrl.menuItem = indexService.MenuItem;
     ctrl.BrandText = indexService.BrandName;
     ctrl.LogoUrl = indexService.LogoName;
-
-    //service to retrieve the location
-    var promise = GetLocation.GetCurrentLocation();
-
-    promise.then(function (result) {
-        ctrl.lat = result.lat;
-        ctrl.lng = result.lng;
-       return GetLocation.GetAddress(result.lat, result.lng);
-    }).then(function (result1) {
-        console.log(result1)
-        var address = result1.data.results[2].formatted_address;
-        ctrl.address = address;
-    }).catch(function () {
-        console.log("Something went wrong!! Unable to find current location!!")
-    });
 };
+
+config.$inject = ['$stateProvider', '$urlRouterProvider']
+function config($stateProvider,$urlRouterProvider) {
+     $urlRouterProvider.otherwise("/Home");
+
+     $stateProvider.state("Home", {
+       url:"/Home",
+       templateUrl:"Components/Home/Home.html"
+     });
+}

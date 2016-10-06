@@ -1,8 +1,9 @@
 body {
     color: black;
     margin: 1%;
-    font-family: Arial;
     background-color:white;
+    /*font-family: 'Cormorant Garamond', serif;*/
+    font-family: 'Cairo', sans-serif;
 }
 
 .fa {

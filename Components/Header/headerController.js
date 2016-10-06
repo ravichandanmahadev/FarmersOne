@@ -1,6 +1,6 @@
 var app = ﻿angular.module("Header", []);
-    app.controller("HeaderController", HeaderController);
-    app.directive("headerPanel", headerPanel);
+app.controller("HeaderController", HeaderController);
+app.directive("headerPanel", headerPanel);
 
 function headerPanel(){
   var ddo = {
@@ -15,5 +15,4 @@ HeaderController.$inject = ['indexService'];
 function HeaderController(indexService){
   var ctrl = this;
   ctrl.menuList =   indexService.MenuItem;
-  console.log(ctrl.menuList);
 }

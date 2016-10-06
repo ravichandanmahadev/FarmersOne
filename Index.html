@@ -4,8 +4,12 @@
     <title></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      @import 'https://fonts.googleapis.com/css?family=Cairo|Cormorant+Garamond';
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
     <script src="Content/Assets/ng-map.min.js"></script>
+    <script src="Content/Assets/angular-ui-router.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -15,20 +19,10 @@
     <script src="IndexService.js"></script>
     <script src="IndexController.js"></script>
     <script src="Components/Header/HeaderController.js"></script>
+    <script src="Components/Home/HomeController.js"></script>
 </head>
 <body ng-app="root" ng-controller="IndexController as Index">
   <header-panel></header-panel>
-    <div class="col-md-6">
-        <map center="[{{Index.lat}}, {{Index.lng}}]">
-            <marker position="{{Index.lat}}, {{Index.lng}}"
-                    title = "Current Location"></marker>
-        </map>
-    </div>
-    <div class="col-md-6">
-        <div>
-            <h4><b>Current Location:</b></h4>
-            <div> {{Index.address}}</div>
-        </div>
-    </div>
+  <ui-view></ui-view>
 </body>
 </html>
