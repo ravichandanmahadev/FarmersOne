@@ -20,4 +20,13 @@ body {
         color: #993300;
     }
 
+.ng-invalid.ng-touched{
+  border-color:  red !important;
+}
+.ng-touched.ng-valid{
+  border-color:  green !important;
+}
+.error{
+  color: red !important;
+}
 /*# sourceMappingURL=custom.css.map */

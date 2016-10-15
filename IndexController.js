@@ -1,6 +1,6 @@
 ﻿var app = angular.module("root", ['ngMap','Header', 'Home', 'ui.router']);
 app.controller("IndexController", ControllerFunction);
-app.provider("indexService", IndexServiceProvider).config(config);
+app.provider("indexService", IndexServiceProvider).config(Routeconfig);
 // app.config(RouteConfig);
 
 
@@ -12,12 +12,17 @@ function ControllerFunction(indexService) {
     ctrl.LogoUrl = indexService.LogoName;
 };
 
-config.$inject = ['$stateProvider', '$urlRouterProvider']
-function config($stateProvider,$urlRouterProvider) {
+Routeconfig.$inject = ['$stateProvider', '$urlRouterProvider']
+function Routeconfig($stateProvider,$urlRouterProvider) {
      $urlRouterProvider.otherwise("/Home");
 
      $stateProvider.state("Home", {
        url:"/Home",
        templateUrl:"Components/Home/Home.html"
+     });
+
+     $stateProvider.state("Register", {
+       url:"/Register",
+       templateUrl:"Components/Register/Register.html"
      });
 }

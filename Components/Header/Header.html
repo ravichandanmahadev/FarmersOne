@@ -9,11 +9,10 @@
                 </button>
                 <a href="#"><img src="Content/Images/Logo.png" alt="Farmers One"></a>
             </div>
-            <div class="collapse navbar-collapse" id="idNav">
+            <div class="collapse navbar-collapse col-md-8" id="idNav">
                 <ul class="nav navbar-nav">
-                    <li ng-repeat="items in list.menuList" ><a href="#">{{::items.item}}</a></li>
+                    <li ng-repeat="items in list.menuList" ><a ui-sref='{{items.route}}'>{{::items.item}}</a></li>
                 </ul>
-
             </div>
         </div>
     </nav>

@@ -8,7 +8,7 @@
 
   app.component("homeComponent", {
     templateUrl : "Components/Home/Home.html",
-    controller: "HomeController as HomeCtrl"
+
   });
 
 HomeController.$inject = ['GetLocation'];

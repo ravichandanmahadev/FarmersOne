@@ -3,7 +3,12 @@
 function IndexServiceProvider() {
     var provider = this;
     provider.defaults = {
-      Menu: [{ item: "Home" }, { item: "The Farmers" }, { item: "The Harvests" }],
+      Menu: [
+        { item: "Home", route:"Home" },
+        { item: "The Farmers" , route:"Home" },
+        { item: "The Harvests" , route:"Home" },
+        {item:"Register",  route:"Register" },
+      ],
       BrandName: "Farmers One",
       LogoUrl : "/Content/Images/Logo.png"
      };
