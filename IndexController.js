@@ -23,6 +23,7 @@ function Routeconfig($stateProvider,$urlRouterProvider) {
 
      $stateProvider.state("Register", {
        url:"/Register",
-       templateUrl:"Components/Register/Register.html"
+       templateUrl:"Components/Register/Register.html",
+       controller : "RegisterController as reg"
      });
 }

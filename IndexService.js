@@ -27,7 +27,6 @@ function IndexService(configObj) {
     service.LogoName = configObj.LogoUrl;
 }
 
-
 GetLocation.$inject = ['$q', '$http'];
 function GetLocation($q, $http) {
     var service = this;

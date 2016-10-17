@@ -1,12 +1,13 @@
-<form name="regForm" class="form-horizontal"  novalidate>
+<form name="regForm" class="form-horizontal"  ng-submit="reg.submit()" novalidate>
 <fieldset>
   <legend>Registration </legend>
-<div class="col-md-6 col-md-offset-2 form-group">
+<div class="col-md-6 col-md-offset-2 form-group" ng-if ="!reg.submit">
     <label>***Please enter the below information:</label>
     <h4>User Name :</h4>
     <div>
      <input type = "text" placeholder="User Name" name="user" ng-model="reg.user.userName" required minlength="4" ng-maxlength="10" class="form-control"></input>
      <span ng-if="(regForm.user.$error.required || regForm.user.$error.minlength) && regForm.user.$touched" class="error">Please enter valid user name</span>
+     <span ng-if="(regForm.user.$error.ng-maxlength) && regForm.user.$touched" class="error">Username must be less than 10 characters</span>
      {{reg.user.userName}}
     </div>
   <h4>e-mail  :</h4>
@@ -35,8 +36,22 @@
   </div>
   <br/>
   <div>
-    <input type = "submit" ng-disabled="regForm.$invalid" class="btn btn-primary"></input>
+    <input type = "submit" ng-disabled="regForm.$invalid" class="btn btn-primary" ></input>
   </div>
+</div>
+
+<div class="col-md-6 col-md-offset-2 form-group" ng-if ="reg.submit">
+  <span>Registration successfully completed!!</span>
+  <div>{{reg.user.userName}}</div>
+  <div>{{reg.user.eMail}}</div>
+  <div>
+    {{reg.user.address.addr1}}
+    {{reg.user.address.addrline1}}
+    {{reg.user.address.addrline2}}
+    {{reg.user.address.city}}
+    {{reg.user.address.zipCode}}
+  </div>
+<div>
 </div>
 </fieldset>
 </form>
