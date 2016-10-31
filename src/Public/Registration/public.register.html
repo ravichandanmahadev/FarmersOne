@@ -1,0 +1,59 @@
+<div class="col-md-8 col-md-offset2">
+<form name="regForm" class="form-horizontal"  ng-submit="reg.submit()" novalidate>
+<fieldset>
+  <legend>Registration </legend>
+<div class="col-md-6 col-md-offset-2 form-group" ng-if ="!reg.submit">
+    <label>***Please enter the below information:</label>
+    <h4>User Name :</h4>
+    <div>
+     <input type = "text" placeholder="User Name" name="user" ng-model="reg.user.userName" required minlength="4" ng-maxlength="10" class="form-control"></input>
+     <span ng-if="(regForm.user.$error.required || regForm.user.$error.minlength) && regForm.user.$touched" class="error">Please enter valid user name</span>
+     <span ng-if="(regForm.user.$error.ng-maxlength) && regForm.user.$touched" class="error">Username must be less than 10 characters</span>
+     {{reg.user.userName}}
+    </div>
+  <h4>e-mail  :</h4>
+  <div>  <input type = "email" placeholder="e-mail address" name="email" ng-model="reg.user.eMail" required class="form-control"></input></div>
+   <span ng-if="(regForm.email.$invalid)  && regForm.email.$touched" class="error">Please enter valid e-mail address</span>
+  <div>
+    <h4>Address :</h4>
+        <div>
+          <input type ="text" placeholder="Address Line 1" name="addr1" ng-model="reg.user.address.addrline1" required class="form-control"></input>
+          <span ng-if="(regForm.addr1.$invalid)  && regForm.addr1.$touched" class="error">Please enter valid address line</span>
+        </div>
+        <br/>
+        <div>
+          <input type ="text" placeholder="Address Line 2" name = "addr2" ng-model="reg.user.address.addrline2" class="form-control"></input>
+        </div>
+        <br/>
+        <div>
+          <input type ="text" placeholder="City" name="city" ng-model="reg.user.address.city" required class="form-control"></input>
+          <span ng-if="(regForm.city.$invalid)  && regForm.city.$touched" class="error">Please enter valid city</span>
+        </div>
+        <br/>
+        <div>
+          <input type ="text" placeholder="Zip Code" name= "zipcode" ng-model="reg.user.address.zipCode"  pattern="(\d{5})"
+          required class="form-control"></input>
+          <span ng-if="(regForm.zipcode.$invalid)  && regForm.zipcode.$touched" class="error">Please enter valid zipcode</span>
+        </div>
+  </div>
+  <br/>
+  <div>
+    <input type = "submit" ng-disabled="regForm.$invalid" class="btn btn-primary" ></input>
+  </div>
+</div>
+
+<div class="col-md-6 col-md-offset-2 form-group" ng-if ="reg.submit">
+  <span>Registration successfully completed!!</span>
+  <div>{{reg.user.userName}}</div>
+  <div>{{reg.user.eMail}}</div>
+  <div>
+    {{reg.user.address.addr1}}
+    {{reg.user.address.addrline1}}
+    {{reg.user.address.addrline2}}
+    {{reg.user.address.city}}
+    {{reg.user.address.zipCode}}
+  </div>
+
+</fieldset>
+</form>
+</div>
